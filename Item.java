@@ -1,55 +1,32 @@
 public class Item {
+    //Private variables
     private String name;
     private int amount;
+
+    //Default Constructor
     public Item () {
         name = "NULL";
         amount = 0;
     }
+
+    //2 Parameter Constructor
     public Item (String nameArg, int amountArg) {
+        name = nameArg;
+        amount = amountArg;
     }
 
-    Item() {
-
-    }
-
+    //Getters
     public String getName() {
         return name;
     }
+    public int getAmount(){
+        return amount;
+    }
 
-    //std::string getName();
-    //int getAmount();
-    //void increaseAmount(int amountArg);
-
+    //Modifiers
     public void increaseAmount(int amountArg){
         amount += amountArg;
     }
 
-    public int getAmount(){
-        return amount;
-    }
+
 }
-    public String getName();
-            int getAmount();
-            void increaseAmount(int amountArg);
-
-
-            }
-
-            }
-
-/*
-
-        Item::Item(std::string nameArg, int amountArg) {
-        name = nameArg;
-        amount = amountArg;
-        }
-        std::string Item::getName() {
-        return name;
-        }
-        int Item::getAmount() {
-        return amount;
-        }
-        void Item::increaseAmount(int amountArg) {
-        amount += amountArg;
-        }
-*/

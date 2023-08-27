@@ -1,13 +1,14 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main (String[] args){
-        Database mainDatabase;
-        Misc newMisc;
-        String input;
+        Database mainDatabase = new Database();
+        Scanner mainScan = new Scanner(System.in);
         Misc.showOptions("main");
-        getline(cin, input);
-        input = newMisc.getInput(3, input);
+        String input = mainScan.nextLine();
+        input = Misc.getInput(3, input);
 
-        switch (input.at(0)) {
+        switch (input.charAt(0)) {
             case 1:
                 mainDatabase.DBaddItem();
                 break;
@@ -15,11 +16,11 @@ public class Main {
                 mainDatabase.show();
                 break;
             case 3:
-                System.out.print() << "Ending program...";
+                System.out.print("Ending program...");
                 break;
             default:
                 //nothing
-                System.out.print() << "Error occurred probably...";
+                System.out.print("Error occurred probably...");
         }
     }
 }

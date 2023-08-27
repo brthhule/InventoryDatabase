@@ -1,53 +1,43 @@
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Misc {
     public Misc (){
         //Empty
     }
 
-    /*public void showOptions(String filename) {
-        filename = "TxtFiles\\\\" + filename + ".txt";
-        myfile.open(filename);
-        String line;
-        if (myfile.is_open())
-        {
-            getline(myfile, line);
-            cout << line;
-            while (getline (myfile, line))
-            {
-                cout << "\n" << line;
-            }
-        }
-    }*/
+    public static void showOptions(String filename) {
+        String filePath = "TxtFiles\\\\" + filename + ".txt";
 
-        public String getInput(int highestNumber, String input) {
-            ArrayList<String> AV = new ArrayList<String>();
-            for (int x = 1; x <= highestNumber; x++) {
-                AV.push_back(to_String(x));
+        try {
+            File newFile = new File (filePath);
+            Scanner fileReader = new Scanner (newFile);
+            String line = fileReader.nextLine();
+            System.out.print(line);
+            while (fileReader.hasNextLine()) {
+                line = fileReader.nextLine();
+                System.out.print("\n" + line);
             }
-
-            for (String av : AV) {
-                if (input == av)
-                    return input;
-            }
-            cout << "Invalid entry; please try again...\n";
-            getInput(highestNumber, input);
-            return "NULL";
+            fileReader.close();
+        } catch (Exception e) {
+            System.out.println("Error occurred... please try again");
         }
     }
 
+    public static String getInput(int highestNumber, String input) {
+        ArrayList<String> AV = new ArrayList<String>();
+        for (int x = 1; x <= highestNumber; x++) {
+            AV.add(Integer.toString(x));
+        }
 
+        for (String av : AV) {
+            if (input == av)
+                return input;
+        }
+        System.out.print ("Invalid entry; please try again...\n");
+        getInput(highestNumber, input);
+        return "NULL";
+    }
 }
-
-
-
-        void
-
-        class Misc {
-        public:
-        Misc();
-        void showOptions(String filename);
-        String getInput(int highestNumber, String input);
-        private:
-        };
-        #endif

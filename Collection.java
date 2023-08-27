@@ -9,14 +9,20 @@ public class Collection {
     private String pathName;
     private int level;
 
+                    //Constructors
+    //Default constructor, empty, shouldn't be used
     public Collection() {
         //Empty
     }
 
-    public Collection(String pathNameArg, String nameArg) {
-        pathName = pathNameArg;
+    //Three parameter constructor, should be used
+    public Collection(String previousPath, String nameArg, int previousLevel) {
+        pathName = previousPath + "/" + nameArg;
+        name = nameArg;
+        level = previousLevel++;
     }
 
+                    //Modifiers
     public void addCollection(Collection newC) {
         collectionMap.put(newC.getName(), newC);
     }
