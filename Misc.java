@@ -1,6 +1,6 @@
 public class Misc {
     public Misc (){
-        Misc::showOptions(std::string filename) {
+        showOptions(String filename) {
             std::ifstream myfile;
             filename = "TxtFiles\\\\" + filename + ".txt";
             myfile.open(filename);

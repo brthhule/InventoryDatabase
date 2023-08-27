@@ -1,33 +1,25 @@
 public class Item {
+    private String name;
+    private int amount;
+    public Item () {
+        //Empty
+    }
+
+    public Item (String nameArg, int amountArg) {
+
+    }
+
+    public String getName() {
+    }
 }
-
-
-#ifndef ITEM_H
-        #define ITEM_H
-
-        #include <iostream>
-#include <string>
-
-class Item {
-    public:
-    Item();
-    Item(std::string nameArg, int amountArg);
-
     std::string getName();
     int getAmount();
     void increaseAmount(int amountArg);
 
-    private:
-    std::string name;
-    int amount;
 
 };
 
-#endif
-
-        #include "Item.h"
-
-        Item::Item() {
+Item() {
         name = "NULL";
         amount = NULL;
         }
