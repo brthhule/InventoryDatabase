@@ -13,8 +13,6 @@ public class Collection {
         collectionMap[newC.getName()] = newC;
     }
 
-    
-
     String getName() {
         return name;
     }

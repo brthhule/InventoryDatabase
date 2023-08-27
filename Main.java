@@ -3,7 +3,7 @@ public class Main {
         Database mainDatabase;
         Misc newMisc;
         String input;
-        newMisc.showOptions("main");
+        Misc.showOptions("main");
         getline(cin, input);
         input = newMisc.getInput(3, input);
 
