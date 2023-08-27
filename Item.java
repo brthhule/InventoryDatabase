@@ -10,15 +10,26 @@ public class Item {
     }
 
     public String getName() {
+       return name;
     }
+
+    //std::string getName();
+    //int getAmount();
+    //void increaseAmount(int amountArg);
+
+    public void increaseAmount(int amountArg){
+        amount += amountArg;
+    }
+
+    public int getAmount(){
+        return amount;
+    }
+
+
+
 }
-    std::string getName();
-    int getAmount();
-    void increaseAmount(int amountArg);
 
-
-};
-
+/*
 Item() {
         name = "NULL";
         amount = NULL;
@@ -40,3 +51,4 @@ Item() {
         void Item::increaseAmount(int amountArg) {
         amount += amountArg;
         }
+*/
