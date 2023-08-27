@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Database {
     //Private variables
     private Collection baseCollection;
-    private Scanner databaseScan;
+    private final Scanner databaseScan;
 
     //Constructor
     public Database(){
@@ -38,7 +38,7 @@ public class Database {
     public void createCollection(String name){
         String pathName = "SavedInfo/" + name;
         //Create new collection object
-        Collection newC = new Collection (pathName, name);
+        Collection newC = new Collection (pathName, name, baseCollection.getLevel());
         //Add the collection oject to the baseCollection map of collections
         baseCollection.addCollection(newC);
     }
