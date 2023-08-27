@@ -65,4 +65,14 @@ public class Collection {
         System.out.print("Collections: \n");
         System.out.print("Items: \n");
     }
+    public void displayUnorganized() {
+        for (String i : itemMap.keySet()) {
+            System.out.println("key: " + i);
+        }
+        for (String i : collectionMap.keySet()) {
+            System.out.println("key: " + i);
+        }
+    }
+
+
 }
