@@ -29,29 +29,24 @@ public class Collection {
 
         //If item exists
         if (itemMap.containsKey(newI.getName())) {
-            itemMap.at(newI.getName()).increaseAmount(newI.getAmount());
+            itemMap.get(newI.getName()).increaseAmount(newI.getAmount());
         }
     }
 
-    Item getItem(String itemName) {
-        return itemMap.at(itemName);
+    public Item getItem(String itemName) {
+        return itemMap.get(itemName);
     }
 
-    bool hasItem(String itemName) {
-        return itemMap.count(itemName);
+    public boolean hasItem(String itemName) {
+        return itemMap.containsKey(itemName);
     }
 
-    bool hasCollection(String collectionName) {
-        return collectionMap.count(collectionName);
+    public boolean hasCollection(String collectionName) {
+        return collectionMap.containsKey(collectionName);
     }
 
-    void showCollection() {
-        System.out.print() << "Collections: \n";
-        //Collection c = showCollectionTemplate<Collection>(collectionMap);
-        System.out.print() << "Items: \n";
-        showCollection2(i);
-        //Item i = showCollectionTemplate<Item>(itemMap);
+    public void showCollection() {
+        System.out.print("Collections: \n");
+        System.out.print("Items: \n");
     }
-
-
 }

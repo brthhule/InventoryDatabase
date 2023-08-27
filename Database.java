@@ -1,85 +1,55 @@
+import java.util.Scanner;
+
 public class Database {
-}
-
-#ifndef DATABASE_H
-        #define DATABASE_H
-
-        #include <iostream>
-#include <stdio.h>
-        #include <vector>
-#include <unordered_map>
-#include <string.h>
-
-        #include "Item.h"
-        #include "Collection.h"
-        #include "Misc.h"
-
-class Database {
-    public:
-    Database();
-    void DBaddItem();
-    void createCollection(std::string collectionNmae);
-    void show();
-
-
-
-    //function pointer
-
-
-    private:
-    void showAllOrganized();
-    void showAllNotOrganized();
-    Collection baseCollection;
-
-};
-
-#endif
-
-
-        #include "Database.h"
-
-        Database::Database() {
-        //Empty
-        }
-
-        void Database::DBaddItem() {
+    
+    private Collection baseCollection;
+    Scanner databaseScan;
+    
+    public Database(){
+        databaseScan = new Scanner(System.in);
+    }
+    public void DBaddItem(){
         //Item information-
-        std::string collectionName;
-        std::string itemName;
-        std::string amount;
+        String collectionName;
+        String itemName;
+        String amount;
 
         //Get item information
-        std::cout << "Enter a collection name: ";
-        std::getline(std::cin, collectionName);
-        std::cout << "Enter an item: ";
-        std::getline(std::cin, itemName);
-        std::cout << "Enter an amount: ";
-        std::getline(std::cin, amount);
+        System.out.print("Enter a collection name:");
+        collectionName = databaseScan.nextLine();
+        System.out.print("Enter an item:");
+        itemName = databaseScan.nextLine();
+        System.out.print("Enter an amount: ");
+        amount = databaseScan.nextLine();
 
-        //Create item from item information-- item name and amount
-        Item newItem (itemName, std::stoi(amount));
+        Item newItem = new Item (itemName, Integer.parseInt(amount));
 
         //If the collection doesn't already exists in the base collection
         if (!baseCollection.hasCollection(collectionName))
         {
-        //Create collection
-        createCollection(collectionName);
-        //Collection now exists
+            //Create collection
+            createCollection(collectionName);
+            //Collection now exists
         }
 
-        //Create pointer to the collection of the item
-        Collection* collectionPtr = baseCollection.getCollection(collectionName);
-        //Add the item to that collection
-        collectionPtr->addItem(newItem);
-        //Delete pointer
-        delete collectionPtr;
-        //End method
-        return;
-        }
+    public void createCollection(String collectionNmae){
+        
+    }
+    
+    public void show(){
+        
+    }
+    
+    public void showAllUnorganized(){
+        
+    }
+    
+
+}
 
 //Create a new collection for base collection
-        void Database::createCollection(std::string collectionNmae) {
-        std::string pathName = "SavedInfo/" + collectionNmae;
+        void Database::createCollection(String collectionNmae) {
+        String pathName = "SavedInfo/" + collectionNmae;
         //Create new collection object
         Collection newC (pathName, collectionNmae);
         //Add the collection oject to the baseCollection map of collections
@@ -87,10 +57,10 @@ class Database {
         }
 
         void Database::show() {
-        std::string input;
+        String input;
         Misc newMisc;
         newMisc.showOptions("show");
-        std::getline(std::cin, input);
+        getline(cin, input);
         input = newMisc.getInput(3, input);
 
 
