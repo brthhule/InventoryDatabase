@@ -69,8 +69,8 @@ public class Collection {
         for (String i : itemMap.keySet()) {
             System.out.println("key: " + i);
         }
-        for (String i : collectionMap.keySet()) {
-            System.out.println("key: " + i);
+        for (String c : collectionMap.keySet()) {
+            System.out.println("key: " + c);
         }
     }
 
