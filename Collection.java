@@ -51,6 +51,9 @@ public class Collection {
     public Collection getCollection (String name){return collectionMap.get(name);}
     public int getLevel(){return level;}
     public String getPathName(){return pathName;}
+    public int getCollectionsNum(){return collectionMap.size();}
+    public HashMap<String, Collection> getCollectionMap(){return collectionMap;}
+    public HashMap<String, Item> getItemMap(){return itemMap;}
 
                     //Checkers
     public boolean hasItem(String itemName) {

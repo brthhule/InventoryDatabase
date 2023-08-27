@@ -10,7 +10,7 @@ public class Main {
 
         switch (input.charAt(0)) {
             case 1:
-                mainDatabase.DBaddItem();
+                mainDatabase.addItem();
                 break;
             case 2:
                 mainDatabase.show();
