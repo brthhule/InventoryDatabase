@@ -1,23 +1,27 @@
+import java.util.ArrayList;
+
 public class Misc {
     public Misc (){
-        showOptions(String filename) {
-            ifstream myfile;
-            filename = "TxtFiles\\\\" + filename + ".txt";
-            myfile.open(filename);
-            String line;
-            if (myfile.is_open())
+        //Empty
+    }
+
+    /*public void showOptions(String filename) {
+        filename = "TxtFiles\\\\" + filename + ".txt";
+        myfile.open(filename);
+        String line;
+        if (myfile.is_open())
+        {
+            getline(myfile, line);
+            cout << line;
+            while (getline (myfile, line))
             {
-                getline(myfile, line);
-                cout << line;
-                while (getline (myfile, line))
-                {
-                    cout << "\n" << line;
-                }
+                cout << "\n" << line;
             }
         }
+    }*/
 
-        String Misc::getInput(int highestNumber, String input) {
-            vector<String> AV;
+        public String getInput(int highestNumber, String input) {
+            ArrayList<String> AV = new ArrayList<String>();
             for (int x = 1; x <= highestNumber; x++) {
                 AV.push_back(to_String(x));
             }
