@@ -60,20 +60,25 @@ public class Collection {
         return collectionMap.get(name);
     }
     public Collection getDeepCollection(String collectionName){
+        //If this collection is the right one
         if (this.getName().equals(collectionName)){
             return this;
         }
+        //Search through all the collections this collection has
         for (Collection c: collectionMap.values()){
             return c.getDeepCollection(collectionName);
         }
 
-        Collection returnC;
+        //When the recursion "iterator" reaches the end of a path and has to go up to go the next one, return a null-type collection
         if (this.getLevel() != 1){
-            returnC = new Collection ("NULL", "NULL", -1);
+            Collection notHereC = new Collection ("NULL", "NULL", -1);
+            return notHereC;
         }
-        else{
 
-        }
+        //Return statement bc all paths must return a value; should never be used
+        Collection errorC = new Collection ("Error", "Error", -2);
+        return errorC;
+
     }
     public int getLevel(){
         Misc.db("Collection", "getLevel");
