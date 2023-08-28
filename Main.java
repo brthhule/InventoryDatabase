@@ -5,14 +5,15 @@ public class Main {
     public static void main (String[] args){
         Misc.db("Main", "main");
         Database mainDatabase = new Database();
-        Scanner mainScan = new Scanner(System.in);
-        Misc.showOptions("main");
-        String input = mainScan.nextLine();
-        input = Misc.getInput(3, input);
+        int input = Misc.getOption("main");
 
-        switch (input.charAt(0)) {
+        switch (input) {
+            case 0:
+                System.out.println("Error; you cannot not go to the previous menu from the base menu... Please try again:");
+                main (args);
+                break;
             case 1:
-                mainDatabase.addItem();
+                mainDatabase.addObject();
                 break;
             case 2:
                 mainDatabase.show();

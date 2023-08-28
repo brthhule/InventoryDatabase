@@ -20,14 +20,25 @@ public class Misc {
         //Can't do db within db, creates infinite loop
         //db("Misc", "db");
         //Only show info if you want to see what is shown
+        System.out.print(Colors.PURPLE);
         if (debuggingMode){
             System.out.println("File name: " + filename + "; Method name: " + methodName);
         }
+        System.out.print(Colors.RESET);
         //Else, show nothing
     }
 
-    //Show the options that a user can pick
-    public static void showOptions(String filename) {
+    //Get the user's picked option
+    public static int getOption(String filename) {
+        int highestNumber = showOptions(filename);
+        Scanner showOptionsScan = new Scanner (System.in);
+        String input = showOptionsScan.nextLine();
+        input = getInput(highestNumber, input);
+        return Integer.parseInt(input);
+    }
+
+    //Display options
+    public static int showOptions (String filename){
         db("Misc", "showOptions");
         String filePath = "ShowOptions\\main.txt";
 
@@ -35,10 +46,13 @@ public class Misc {
         File newFile = new File (filePath);
         System.out.println("List of options:");
         Scanner fileReader = null;
+        int highestNumber = 0;
         //Print options
         try {
             fileReader = new Scanner (newFile);
             String line = " ";
+            //Get highest number
+            highestNumber = Integer.parseInt(fileReader.nextLine());
             while (fileReader.hasNextLine()) {
                 line = fileReader.nextLine();
                 System.out.print(line + "\n");
@@ -50,18 +64,20 @@ public class Misc {
             System.out.println("Error occurred... please try again");
         }
         System.out.print("Select an option: ");
+        return highestNumber;
     }
 
     public static String getInput(int highestNumber, String input) {
         db("Misc", "getInput");
         ArrayList<String> AV = new ArrayList<String>();
-        for (int x = 1; x <= highestNumber; x++) {
+        for (int x = 0; x <= highestNumber; x++) {
             AV.add(Integer.toString(x));
         }
 
         for (String av : AV) {
-            if (input == av)
+            if (input.equals (av)) {
                 return input;
+            }
         }
         System.out.print ("Invalid entry; please try again...\n");
         getInput(highestNumber, input);

@@ -19,10 +19,23 @@ public class Database {
 
                     //Modifiers
     //Add an item to the database
-    public void addItem() {
+    public void addObject() {
         Misc.db("Database", "addItem");
-        System.out.print("Would you like to add an item to the base collection or to a sub collection?");
-        //Item information-
+        Scanner addItemScan = new Scanner (System.in);
+
+        //Show options
+        int input = Misc.showOptions("addItem");
+        switch (input){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("Error occurred...");
+        }
+
         String collectionName;
         String itemName;
         String amount;

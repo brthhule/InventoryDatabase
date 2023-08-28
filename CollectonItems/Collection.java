@@ -66,7 +66,11 @@ public class Collection {
         }
         //Search through all the collections this collection has
         for (Collection c: collectionMap.values()){
-            return c.getDeepCollection(collectionName);
+            Collection tempC = c.getDeepCollection(collectionName);
+            if (!tempC.getName().equals("NULL"))
+            {
+                return tempC;
+            }
         }
 
         //When the recursion "iterator" reaches the end of a path and has to go up to go the next one, return a null-type collection
