@@ -4,12 +4,30 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Misc {
+    //Private variables
+    private final static boolean debuggingMode = true;
+
+    //Constructor
     public Misc (){
-        //Empty
+        db("Misc", "Misc");
+        //Empty, not really needed bc all class methods are static
     }
 
+    //Display what method the compiler is in and which final it is
+    public static void db (String filename, String methodName){
+        //Can't do db within db, creates infinite loop
+        //db("Misc", "db");
+        //Only show info if you want to see what is shown
+        if (debuggingMode){
+            System.out.println("File name: " + filename + "; Method name: " + methodName);
+        }
+        //Else, show nothing
+    }
+
+    //Show the options that a user can pick
     public static void showOptions(String filename) {
-        String filePath = "src\\ShowOptions\\test.txt";
+        db("Misc", "showOptions");
+        String filePath = "ShowOptions\\main.txt";
 
         //String filePath = "src\\ShowOptions\\" + filename + ".txt";
         File newFile = new File (filePath);
@@ -33,6 +51,7 @@ public class Misc {
     }
 
     public static String getInput(int highestNumber, String input) {
+        db("Misc", "getInput");
         ArrayList<String> AV = new ArrayList<String>();
         for (int x = 1; x <= highestNumber; x++) {
             AV.add(Integer.toString(x));
