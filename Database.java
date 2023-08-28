@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+import CollectonItems.Collection;
+import CollectonItems.Item;
+import Infrastructure.*;
+
 public class Database {
                     //Private variables
     private Collection baseCollection;
@@ -8,6 +12,7 @@ public class Database {
                     //Constructors
     //Default Constructor
     public Database(){
+        Misc.db("Database", "Database");
         baseCollection = new Collection("SavedInfo/", "baseCollection", 0);
         databaseScan = new Scanner(System.in);
     }
@@ -15,6 +20,7 @@ public class Database {
                     //Modifiers
     //Add an item to the database
     public void addItem() {
+        Misc.db("Database", "addItem");
         System.out.print("Would you like to add an item to the base collection or to a sub collection?");
         //Item information-
         String collectionName;
@@ -39,7 +45,7 @@ public class Database {
         Item i = new Item(itemName, Integer.parseInt(amount));
 
         //If the collection doesn't already exist in the base collection
-        if (!baseCollection.hasCollection(collectionName)) {
+        if (!baseCollection.hasSurfaceCollection(collectionName)) {
             //Create collection
             Collection c = new Collection (baseCollection.getPathName(), collectionName, baseCollection.getLevel());
             //Add collection
@@ -47,10 +53,11 @@ public class Database {
         }
 
         //Collection now exists, add item to collection
-        baseCollection.getCollection(collectionName).addItem(i);
+        baseCollection.getSurfaceCollection(collectionName).addItem(i);
     }
 
     public void createCollection(String name){
+        Misc.db("Database", "createCollection");
         String pathName = "SavedInfo/" + name;
         //Create new collection object
         Collection newC = new Collection (pathName, name, baseCollection.getLevel());
@@ -59,10 +66,11 @@ public class Database {
     }
     
     public void showAllUnorganized(){
-        
+        Misc.db("Database", "showAllUnorganized");
     }
 
-    void show() {
+    public void show() {
+        Misc.db("Database", "show");
         Scanner showScan = new Scanner (System.in);
         Misc.showOptions("show");
 
@@ -82,7 +90,11 @@ public class Database {
         }
     }
 
-    void showAllOrganized() {
+    public void showAllOrganized() {
+        Misc.db("Database", "showAllOrganized");
+    }
+
+    public void moveCollection (String moveCollection, String destinationCollection){
 
     }
 }

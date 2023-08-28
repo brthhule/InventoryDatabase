@@ -1,7 +1,9 @@
 import java.util.Scanner;
+import Infrastructure.*;
 
 public class Main {
     public static void main (String[] args){
+        Misc.db("Main", "main");
         Database mainDatabase = new Database();
         Scanner mainScan = new Scanner(System.in);
         Misc.showOptions("main");
