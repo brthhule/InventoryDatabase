@@ -2,6 +2,7 @@ package CollectonItems;
 
 import java.util.HashMap;
 import Infrastructure.*;
+import java.util.Scanner;
 
 public class Collection {
                     //Private variables
@@ -44,6 +45,29 @@ public class Collection {
         if (itemMap.containsKey(newI.getName())) {
             itemMap.get(newI.getName()).increaseAmount(newI.getAmount());
         }
+    }
+    public void createAddItem(){
+        //Get Item information
+        Scanner createItemScan = new Scanner (System.in);
+        System.out.print("Enter an item:");
+        String itemName = createItemScan.nextLine();
+        System.out.print("Enter an amount: ");
+        String amount = createItemScan.nextLine();
+
+        //Create new item
+        Item i = new Item(itemName, Integer.parseInt(amount));
+        this.addItem(i);
+        System.out.println("Item " + Colors.BLUE + itemName + Colors.RESET + " successfully added to collection " + Colors.BLUE + this.getName() + Colors.RESET);
+    }
+
+    public void createAddCollection (){
+        Scanner createCollectionScan = new Scanner (System.in);
+        System.out.print("Enter a name: ");
+        String cName = createCollectionScan.nextLine();
+        Collection c = new Collection (this.getPathName(), cName, this.getLevel());
+        this.addCollection(c);
+        //Print out affirmation statement, colorized
+        System.out.println("Collection " + Colors.BLUE + cName + Colors.RESET + " successfully added to collection " + Colors.BLUE + this.getName() + Colors.RESET);
     }
 
                     //Getters
@@ -124,7 +148,7 @@ public class Collection {
     }
 
                     //Show Collection
-    public void showCollection() {
+    public void showThisCollection() {
         Misc.db("Collection", "showCollection");
         System.out.print("Collections: \n");
         System.out.print("Items: \n");
@@ -136,6 +160,15 @@ public class Collection {
         }
         for (String c : collectionMap.keySet()) {
             System.out.println("key: " + c);
+        }
+    }
+
+    public void showAllCollections(){
+        String level = Integer.toString(this.getLevel());
+        System.out.println("Collection name: " + this.name + "; Level: " + level);
+        //Iterate through all collections in this collection
+        for (Collection c: this.getCollectionMap().values()){
+            c.showAllCollections();
         }
     }
 }

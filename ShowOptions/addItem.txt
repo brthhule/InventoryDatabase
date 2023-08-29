@@ -1,4 +1,4 @@
 2
 - Go to previous menu (0)
-- Add to base collection (1)
-- Add to a sub collection (2)
+- Add a collection to the base collection (1)
+- Add a collection to sub collection (2)

@@ -30,6 +30,7 @@ public class Misc {
 
     //Get the user's picked option
     public static int getOption(String filename) {
+        db("Misc", "getOption");
         int highestNumber = showOptions(filename);
         Scanner showOptionsScan = new Scanner (System.in);
         String input = showOptionsScan.nextLine();
@@ -40,7 +41,7 @@ public class Misc {
     //Display options
     public static int showOptions (String filename){
         db("Misc", "showOptions");
-        String filePath = "ShowOptions\\main.txt";
+        String filePath = "ShowOptions\\" + filename + ".txt";
 
         //String filePath = "src\\ShowOptions\\" + filename + ".txt";
         File newFile = new File (filePath);

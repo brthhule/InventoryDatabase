@@ -21,16 +21,31 @@ public class Database {
     //Add an item to the database
     public void addObject() {
         Misc.db("Database", "addItem");
+        System.out.println(Colors.RED + "****Welome to the Add Object Menu****" + Colors.RESET);
         Scanner addItemScan = new Scanner (System.in);
 
         //Show options
         int input = Misc.showOptions("addItem");
         switch (input){
             case 0:
-                break;
+                System.out.println("Returning to the main menu...");
+                return;
             case 1:
+                System.out.println("Adding to base collection...");
+                baseCollection.createAddCollection();
                 break;
             case 2:
+                System.out.println("Adding to a sub collection...");
+                baseCollection.showAllCollections();
+                System.out.println("Enter the name of the collection you wish to add a collection to: ");
+                String toCName = addItemScan.nextLine();
+                System.out.println("Enter the name of the collection you wish to add: ");
+                String addCName = addItemScan.nextLine();
+
+                //Fix this later because this passes by value, not by reference
+                Collection toC = baseCollection.getDeepCollection (toCName);
+                Collection addC = new Collection (toC.getPathName(), addCName, toC.getLevel());
+                toC.addCollection(addC);
                 break;
             default:
                 System.out.println("Error occurred...");
@@ -41,7 +56,7 @@ public class Database {
         String amount;
 
         //Get item information
-        System.out.print("Enter a collection name (Enter -1 to quit):");
+        System.out.print("Enter a collection name (Enter -1 to quit): ");
         collectionName = databaseScan.nextLine();
 
         //Exit functionality
@@ -98,7 +113,7 @@ public class Database {
                 showAllUnorganized();
                 break;
             case 3:
-                baseCollection.showCollection();
+                baseCollection.showThisCollection();
                 break;
         }
     }

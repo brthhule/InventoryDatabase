@@ -23,7 +23,10 @@ public class Main {
                 break;
             default:
                 //nothing
-                System.out.print("Error occurred probably...");
+                System.out.print("Error occurred probably...\nPlease try again:\n");
+        }
+        if (input != 0){
+            main (args);
         }
     }
 }
