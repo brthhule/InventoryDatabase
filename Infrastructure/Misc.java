@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Misc {
     //Private variables
     private final static boolean debuggingMode = true;
+    private final static Scanner input = new Scanner (System.in);
 
     //Constructor
     public Misc (){
@@ -83,5 +84,10 @@ public class Misc {
         System.out.print ("Invalid entry; please try again...\n");
         getInput(highestNumber, input);
         return "NULL";
+    }
+
+    public static String getItemName(String IorC) {
+        System.out.print("Enter a name for this " + IorC + "(-1 to return to the previous menu): ");
+        return input.nextLine();
     }
 }

@@ -32,20 +32,11 @@ public class Database {
                 return;
             case 1:
                 System.out.println("Adding to base collection...");
-                baseCollection.createAddCollection();
+                baseCollection.addToThisCollection();
                 break;
             case 2:
                 System.out.println("Adding to a sub collection...");
-                baseCollection.showAllCollections();
-                System.out.println("Enter the name of the collection you wish to add a collection to: ");
-                String toCName = addItemScan.nextLine();
-                System.out.println("Enter the name of the collection you wish to add: ");
-                String addCName = addItemScan.nextLine();
-
-                //Fix this later because this passes by value, not by reference
-                Collection toC = baseCollection.getDeepCollection (toCName);
-                Collection addC = new Collection (toC.getPathName(), addCName, toC.getLevel());
-                toC.addCollection(addC);
+                baseCollection.addToSubCollection();
                 break;
             default:
                 System.out.println("Error occurred...");
