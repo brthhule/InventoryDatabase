@@ -3,6 +3,7 @@ import java.util.Scanner;
 import CollectonItems.Collection;
 import CollectonItems.Item;
 import Infrastructure.*;
+import java.io.File;
 
 public class Database {
                     //Private variables
@@ -15,17 +16,20 @@ public class Database {
         Misc.db("Database", "Database");
         baseCollection = new Collection("SavedInfo/", "baseCollection", 0);
         databaseScan = new Scanner(System.in);
+        //Get info from previous session
+        retrieveInformation();
     }
 
                     //Modifiers
     //Add an item to the database
     public void addObject() {
-        Misc.db("Database", "addItem");
-        System.out.println(Colors.RED + "****Welome to the Add Object Menu****" + Colors.RESET);
+        Misc.db("Database", "addObject");
+        System.out.println(Colors.RED + "****Welcome to the Add Object Menu****" + Colors.RESET);
         Scanner addItemScan = new Scanner (System.in);
 
         //Show options
-        int input = Misc.showOptions("addItem");
+        int input = Misc.getOption("addItem");
+        System.out.println("Input: " + input);
         switch (input){
             case 0:
                 System.out.println("Returning to the main menu...");
@@ -114,6 +118,30 @@ public class Database {
     }
 
     public void moveCollection (String moveCollection, String destinationCollection){
+
+    }
+
+    public void saveDatabase (){
+        baseCollection.saveAllCollections();
+        return;
+    }
+
+    public void retrieveInformation(File[] files){
+        for (File filename: files){
+            if (filename.isDirectory()){
+                //Figure out how to handle NullPointerException
+                if (filename.listFiles().length > 0){
+                    retrieveInformation(filename.listFiles());
+                }
+            }
+            else {
+                downloadInformation (filename);
+            }
+        }
+    }
+
+    public void downloadInformation (File file){
+        String pathname = file.getPath();
 
     }
 }

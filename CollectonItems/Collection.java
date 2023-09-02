@@ -2,6 +2,10 @@ package CollectonItems;
 
 import java.util.HashMap;
 import Infrastructure.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+
 import java.util.Scanner;
 
 public class Collection {
@@ -125,7 +129,7 @@ public class Collection {
 
         //If exit method is called
         if (toCName.equals("-1")){
-            System.out.println("Returning to the previous menu... ";
+            System.out.println("Returning to the previous menu... ");
             return;
         }
 
@@ -253,5 +257,31 @@ public class Collection {
         for (Collection c: this.getCollectionMap().values()){
             c.showAllCollections();
         }
+    }
+
+    public void saveAllCollections(){
+        this.save();
+        for (Collection c: this.collectionMap.values()){
+            this.save();
+        }
+    }
+
+    public void save(){
+        try {
+            FileWriter newWriter = new FileWriter (this.getPathName());
+            newWriter.write("Collections:\n");
+            for (String name : this.collectionMap.keySet()){
+                newWriter.write(name + "\n");
+            }
+            newWriter.write("Items: \n");
+            for (Item c: this.itemMap.values()){
+                newWriter.write(c.getName() + "-" + c.getAmount() + "\n");
+            }
+            newWriter.close();
+            System.out.println("Successfully wrote to file!");
+        } catch (IOException e){
+            System.out.println("An error occurred....");
+        }
+        //Add implementation
     }
 }

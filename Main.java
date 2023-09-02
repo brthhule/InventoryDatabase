@@ -9,8 +9,8 @@ public class Main {
 
         switch (input) {
             case 0:
-                System.out.println("Error; you cannot not go to the previous menu from the base menu... Please try again:");
-                main (args);
+                System.out.println("Saving database...");
+                mainDatabase.saveDatabase();
                 break;
             case 1:
                 mainDatabase.addObject();
@@ -28,5 +28,7 @@ public class Main {
         if (input != 0){
             main (args);
         }
+        System.out.println("Database saved....");
+        System.out.println("Program has ended.");
     }
 }
