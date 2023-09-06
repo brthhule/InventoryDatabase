@@ -17,7 +17,15 @@ public class Database {
         baseCollection = new Collection("SavedInfo/", "baseCollection", 0);
         databaseScan = new Scanner(System.in);
         //Get info from previous session
-        retrieveInformation();
+
+        //Create a File object to SavedInfo directory
+        File dir = new File("src\\SavedInfo");
+        if (dir.isDirectory()){
+            retrieveInformation(dir.listFiles());
+        }
+        else {
+            System.out.println("Something went wrong...");
+        }
     }
 
                     //Modifiers
